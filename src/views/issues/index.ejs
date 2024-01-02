@@ -1,0 +1,47 @@
+<h1>Issues</h1>
+<table class="table table-striped">
+  <tbody id="issue-list">
+    <% if (viewData?.issues?.length) { %>
+      <% for (const issue of viewData.issues) { %>
+        <tr data-id="<%= issue.gitlabID %>">
+          <td class="w-50">
+           <img crossorigin="anonymous" src="<%= issue.avatar %>" />
+          </td>
+          <td class="w-10" id="title">
+            The issues title: <%= issue.title %>
+          </td>
+          <td class="w-10" id="description">
+            The issues description: <%= issue.description %>
+          </td>
+          <td class="text-nowrap">
+            <% if (issue && issue.state === 'opened') { %>
+              <a id="openorcloselink" href="./issues/<%= issue.gitlabID %>/close">Close</a>
+            <% } else if (issue && issue.state === 'closed') { %>
+              <a id="openorcloselink" href="./issues/<%= issue.gitlabID %>/open">Open</a>
+            <% } %>
+          </td>
+        </tr>
+      <% } %>
+    <% } else { %>
+      <tr>
+        <td colspan="3" class="text-center text-danger">
+          There are no issues to display
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+
+<%# Socket.IO: Template for the client. The same as above, sort of. %>
+<template id="issue-template">
+  <tr>
+    <td class="w-50" id="avatar"></td>
+    <td class="w-10" id="title"></td>
+    <td class="w-10" id="description"></td>
+    <td class="text-nowrap">
+      <a id="openorcloselink"></a>
+    </td>
+  </tr>
+  <div id="description"></div>
+</template>

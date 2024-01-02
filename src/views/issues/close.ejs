@@ -1,0 +1,28 @@
+<h1>Close issues</h1>
+<form class="row g-3" method="post" action="./issues/<%= viewData?.gitlabID %>/close">
+  <input type="hidden" name="id" value="<%= viewData?.id %>" />
+  <div class="col-md-12">
+    <label class="form-label" for="titleInput">
+      Title
+    </label>
+    <input type="text" class="form-control" id="titleInput"
+      placeholder="Update issue title here" value="<%= viewData?.title %>"
+      disabled />
+  </div>
+  <div class="col-md-12">
+    <label class="form-label" for="descriptionInput">
+      Description
+    </label>
+    <input type="text" class="form-control" id="descriptionInput"
+      placeholder="Update issue description here" value="<%= viewData?.description %>"
+      disabled />
+  </div>
+  </div class="row">
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" autofocus="autofocus">Close</button>
+    </div>
+    <div class="col-12">
+      <a href="./issues/" class="btn btn-primary">Come back</a>
+    </div>
+  </div>
+</form>
